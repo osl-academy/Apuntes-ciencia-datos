@@ -1,0 +1,19 @@
+# Intalando git con conda
+conda install git
+
+# Configurando nombre de usuario, email
+# El email debe estar añadido a github
+git config --global user.name "nombre_usuario"
+git config --global user.email "email_usuario@xyz.com"
+
+# Configurando para que el editor por defecto sea VsCode
+# para la editar lo mensajes de los commit
+git config --global core.editor "code --wait"
+
+# Para configurar que por defecto el nombre de  la rama 
+# principal sea "main", y coincida con el de github
+git config --global init.defaultBranch main
+
+# Para verificar que los cambios se hayan hecho correctamente
+git config --list
+# Revisar para windows que core.autocrlf este en truee

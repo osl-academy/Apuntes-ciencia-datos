@@ -1,0 +1,102 @@
+Comandos útiles para Git
+Para iniciar el trabajo desde tu ordenador
+# empezando a trabajar con git ejecute este comando dentro de la carpeta que va a convertirse en su respositorio
+$ git init
+
+# Para añadir los archivos al staging area
+$ git add <nombre_archivo.xcd>
+
+# Para añadir todos los archivos modificados al staging area
+$ git add .
+
+# Para hacer el commit de los archivos que estan en el staging area
+$ git commit -m "mensaje relacionado con el commit"
+# En caso de que sólo se ponga git commit se abrira VsCode para editar el mensaje una vez cerrado volvera a la terminal
+
+# En cualquier momento puede verificar el estado de sus archivos con 
+$ git status
+$ git status -s
+
+# Para ver el historial de commits con sus correspondiente clave
+$ git log
+# Puede usar tambien
+$ git log --oneline
+$ git log --oneline --graph
+
+# Para llevar este respositorio a github cree un respositorio en github
+# vía CLick "+ " -> "New Repository"
+# Llenar los campos "Repository name" "Description" 
+Si ya tiene un repositorio en su ordenador:
+Para llevar este repositorio a github cree un respositorio con su cuenta en github vía 
+- Click en "+ " -> "New Repository"
+- Llenar los campos "Repository name" "Description" 
+# Es preferible que sea un repositorio público
+# llene los espacios opcionales si desea
+- Click en "Create repository"
+
+Copie el código SSH del repositorio el link que que tienen la forma "git@github.com:nombre_usuario/respositorio.git"
+
+En la terminal de su ordenador dentro de la carpeta que tiene el repositorio, ejecute
+$ git remote add origin <codigo_ssh_repositorio.git>
+#debería tener la forma
+$ git remote add origin git@github.com:nombre_usuario/respositorio.git
+# pegue el ssh del repositorio en <codigo_ssh_repositorio.git>
+# Ahora origin hará referencia al repositorio remoto que tiene en github
+# Para ver los repositorios remotos de github puede ejecutar
+git remote show origin
+git remote -v
+
+# Subiendo archivos al repositorio remoto en github
+# Cada vez que cree una rama nueva use -u (para que empiece a realizarse el seguimiento de ambas ramas en el main remoto y el el main local) en este caso estamos creando una rama principal main
+$ git push -u origin main
+# Esto subira al repositorio remoto en github todos los archivos de los cuales se hayan hecho commit
+
+# luego si hace las modificaciones y nuevos commit y no crea nuevas ramas puede hacer
+$ git push
+#que será lo mismo que ejecutar git push <repositorio_remoto> <rama_actual>
+$ git push origin main
+
+
+Para copiar tu repositorio en github a tu ordenador.
+Copie el código SSH del repositorio, el link que que tienen la forma "git@github.com:nombre_usuario/respositorio.git"
+
+Desde la terminal en el directorio que va a recibir el respositorio
+$ git clone <codigo_ssh_repositorio.git>
+# Debería tener la forma
+$ git remote add origin git@github.com:nombre_usuario/respositorio.git
+# Ahora el repositorio se creo dentro de la carpeta con el mismo nombre del repositorio.
+
+# Para crear una nueva rama
+$ git checkout -b <nombre_nueva_rama>
+
+# Para cambiar a la rama principal main
+$ git checkout main
+
+# Para cambiar a cuanlquier rama
+$ git checkout <nombre_rama>
+
+# Para ver las ramas creadas
+$ git branch -a
+# Te muestra todas las ramas existentes y marca con con un asterisco la rama en la cual te encuentras
+
+# Para subir una nueva rama al repositorio remoto
+$ git push -u origin <nombre_rama>
+
+# Para juntar el main con la rama, hacer el merge desde la rama principal main
+$ git merge <nombre_rama>
+
+# Para actualizar el repositorio en tu computadora, para copiar las ultimas actualizaciones del repositorio remoto
+$ git fetch
+$ git pull
+
+# Para deshacer el ultimo commit
+$ git revert <codigo_commit_a_revetir>
+# el código del commit se ve cuando se hace el git log, hace un nuevo commit deshaciendo 
+# los cambios del anterior commit
+
+# Para resetear los commits hasta un commit deseado
+$ git reset --hard <codigo_commit_hasta_donde_resetear>
+# Se recomienda usar esto solamente con los commit locales de tu computadora y no 
+# con commits que ya hayan sido subidos al repositorio remoto, tener en cuenta
+# que borra también los historiales de coomit hechos
+

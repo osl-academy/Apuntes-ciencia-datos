@@ -1,0 +1,31 @@
+Configurando SSH Keys para trabajar remotamente con GitHub
+# Revisar que no haya cambiado el procedimiento en https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+- Verificar tener instalado git
+$ git --version
+
+Genere las claves publica y privada con ssh en la terminal
+$ ssh-keygen -t ed25519 -C "nombre_email@xyz.com"
+# Si en caso no funcionara usar 
+# $ ssh-keygen -t rsa -b 4096 -C "nombre_email@xyz.com"
+
+Presionar Enter para aceptar que se creen las llaves ssh en el directorio por defecto
+
+> Enter a file in which to save the key (/c/Users/nombre_usuario/.ssh/id_algorithm):[Press enter]
+
+Luego te pedira que introduzcas un passphrase 
+(Se recomienda simplemente presionar Enter)
+
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+
+Luego ir al directorio "c:\Users\nombre_usuario\.ssh/" luego abrir el archivo con el block de notas "id_ed25519.pub" con terminación ".pub" copiar el contenido con CTRL+V. 
+
+Ingresar a tu cuenta en github.com, ir la sección de "Settings" -> "SSH and GPG keys"
+Hacer click en "New SSH key" o "Add SSH key".
+
+En el campo "Title" añadir un descripción para la nueva llave. Ej. puede usar "laptop personal" 
+
+En el campo "Key" pegue la llave copiada.
+
+Click en "Add SSH key"
